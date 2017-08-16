@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AppAsync</string>
+    <string name="title_activity_main_processes">MainProcessesActivity</string>
 </resources>
