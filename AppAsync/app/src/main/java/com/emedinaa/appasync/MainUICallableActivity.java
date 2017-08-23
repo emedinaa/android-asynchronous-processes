@@ -59,14 +59,14 @@ public class MainUICallableActivity extends AppCompatActivity {
             @Override
             public void onDone(ImmutableList<Movie> result) {
                 hideLoading();
-                Toast.makeText(MainUICallableActivity.this, "message", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainUICallableActivity.this, "Complete !", Toast.LENGTH_SHORT).show();
                 renderMovies(result);
             }
         }).fail(new FailCallback<Throwable>() {
             @Override
             public void onFail(Throwable result) {
                 hideLoading();
-                Toast.makeText(MainUICallableActivity.this, "error "+result.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainUICallableActivity.this, "Error ! "+result.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

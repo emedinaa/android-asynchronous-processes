@@ -21,6 +21,7 @@ import java.util.concurrent.TimeUnit;
 
 public class MainUIRunnableActivity extends BaseActivity implements UICallback {
 
+    private final String TAG="CONSOLE";
     private final int SPAN_COUNT = 2;
 
     private RecyclerView recyclerViewMovies;
@@ -51,7 +52,7 @@ public class MainUIRunnableActivity extends BaseActivity implements UICallback {
         mExecutorService = new ThreadPoolExecutor(NUMBER_OF_CORES, NUMBER_OF_CORES * 2, KEEP_ALIVE_TIME, KEEP_ALIVE_TIME_UNIT, mTaskQueue);
         mExecutorService.submit(new JsonDataRunnable(assetJsonHelper, this));
 
-        Log.v("CONSOLE", "1 Iniciar Hilo");
+        Log.v(TAG, "1. Start Thread");
     }
 
     @Override
@@ -71,6 +72,7 @@ public class MainUIRunnableActivity extends BaseActivity implements UICallback {
     @Override
     protected void updateUI(Bundle bundle, int type) {
         super.updateUI(bundle, type);
+        Log.v(TAG, "3. Update UI");
         MovieAdapter movieAdapter = new MovieAdapter(movies);
         recyclerViewMovies.setAdapter(movieAdapter);
     }
@@ -78,6 +80,7 @@ public class MainUIRunnableActivity extends BaseActivity implements UICallback {
     @Override
     public void updateUICallback(ImmutableList<Movie> movies) {
         this.movies = movies;
+        Log.v(TAG, "2. Complete Task -> UI");
         if (handler != null) {
             handler.sendEmptyMessage(100);
         }

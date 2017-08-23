@@ -1,5 +1,7 @@
 package com.emedinaa.appasync.task;
 
+import android.util.Log;
+
 import com.emedinaa.appasync.model.Movie;
 import com.emedinaa.appasync.model.MovieJsonData;
 import com.emedinaa.appasync.utils.AssetJsonHelper;
@@ -11,6 +13,7 @@ import com.google.common.collect.ImmutableList;
 
 public class JsonDataRunnable implements Runnable{
 
+    private final String TAG= "CONSOLE";
     private final AssetJsonHelper assetJsonHelper;
     private final UICallback uiCallback;
     private ImmutableList<Movie> mMovies=null;
@@ -18,6 +21,11 @@ public class JsonDataRunnable implements Runnable{
     public JsonDataRunnable(AssetJsonHelper assetJsonHelper, UICallback uiCallback) {
         this.assetJsonHelper = assetJsonHelper;
         this.uiCallback = uiCallback;
+    }
+
+    public JsonDataRunnable(AssetJsonHelper assetJsonHelper) {
+        this.assetJsonHelper = assetJsonHelper;
+        this.uiCallback = null;
     }
 
     private void loadMovies(){
@@ -36,6 +44,7 @@ public class JsonDataRunnable implements Runnable{
     @Override
     public void run() {
         loadMovies();
-        uiCallback.updateUICallback(mMovies);
+        Log.v(TAG, "Runnable task complete");
+        if(uiCallback!=null)uiCallback.updateUICallback(mMovies);
     }
 }

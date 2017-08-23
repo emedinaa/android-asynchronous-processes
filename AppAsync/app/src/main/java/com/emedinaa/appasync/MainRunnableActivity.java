@@ -6,7 +6,6 @@ import android.widget.TextView;
 
 import com.emedinaa.appasync.model.Movie;
 import com.emedinaa.appasync.task.JsonDataRunnable;
-import com.emedinaa.appasync.task.UICallback;
 import com.emedinaa.appasync.ui.BaseActivity;
 import com.google.common.collect.ImmutableList;
 
@@ -20,7 +19,7 @@ import java.util.concurrent.TimeUnit;
  * Created by emedinaa on 8/08/17.
  */
 
-public class MainRunnableActivity extends BaseActivity implements UICallback {
+public class MainRunnableActivity extends BaseActivity {
 
     private final String TAG= "CONSOLE";
 
@@ -50,9 +49,9 @@ public class MainRunnableActivity extends BaseActivity implements UICallback {
         mTaskQueue = new LinkedBlockingQueue<Runnable>();
 
         mExecutorService = new ThreadPoolExecutor(NUMBER_OF_CORES, NUMBER_OF_CORES*2, KEEP_ALIVE_TIME, KEEP_ALIVE_TIME_UNIT, mTaskQueue);
-        mExecutorService.submit(new JsonDataRunnable(assetJsonHelper,this));
+        mExecutorService.submit(new JsonDataRunnable(assetJsonHelper));
 
-        Log.v(TAG, "1 start Thread ...");
+        Log.v(TAG, "1 Start Thread ...");
     }
 
     @Override
@@ -60,18 +59,5 @@ public class MainRunnableActivity extends BaseActivity implements UICallback {
         super.onResume();
         renderThreads();
     }
-
-    @Override
-    public void updateUICallback(ImmutableList<Movie> movies) {
-        this.movies=movies;
-        if(handler!=null){
-            handler.sendEmptyMessage(100);
-        }
-    }
-
-    protected void updateUI(Bundle bundle, int type) {
-        Log.v(TAG, "3 update UI...");
-    }
-
 
 }
