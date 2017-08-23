@@ -4,7 +4,6 @@ import android.os.Handler;
 import android.os.Looper;
 
 import com.emedinaa.appasync.model.Movie;
-import com.emedinaa.appasync.utils.AssetJsonHelper;
 
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
@@ -20,7 +19,7 @@ import java.util.concurrent.TimeUnit;
  * Created by eduardomedina on 21/08/17.
  */
 
-public class TaskManager<T> {
+public class TaskManager{
 
     final int DEFAULT_THREAD_POOL_SIZE = 4;
     int NUMBER_OF_CORES = Runtime.getRuntime().availableProcessors();
@@ -35,8 +34,8 @@ public class TaskManager<T> {
         mExecutorService = new ThreadPoolExecutor(NUMBER_OF_CORES, NUMBER_OF_CORES * 2, KEEP_ALIVE_TIME, KEEP_ALIVE_TIME_UNIT, mTaskQueue);
     }
 
-    public void  execute(Callable<T> callable){
-        Future<T> future= mExecutorService.submit(callable);
+    public void  execute(Callable<List<Movie>> callable){
+        Future<List<Movie>> future= mExecutorService.submit(callable);
     }
 
 
