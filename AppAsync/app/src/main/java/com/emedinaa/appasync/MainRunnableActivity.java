@@ -52,7 +52,7 @@ public class MainRunnableActivity extends BaseActivity implements UICallback {
         mExecutorService = new ThreadPoolExecutor(NUMBER_OF_CORES, NUMBER_OF_CORES*2, KEEP_ALIVE_TIME, KEEP_ALIVE_TIME_UNIT, mTaskQueue);
         mExecutorService.submit(new JsonDataRunnable(assetJsonHelper,this));
 
-        Log.v(TAG, "1 Iniciar Hilo ...");
+        Log.v(TAG, "1 start Thread ...");
     }
 
     @Override
@@ -70,7 +70,7 @@ public class MainRunnableActivity extends BaseActivity implements UICallback {
     }
 
     protected void updateUI(Bundle bundle, int type) {
-        Log.v(TAG, "3 UpdateUI...");
+        Log.v(TAG, "3 update UI...");
     }
 
 

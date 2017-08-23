@@ -8,13 +8,11 @@ import android.widget.TextView;
 
 import com.emedinaa.appasync.model.JsonData;
 import com.emedinaa.appasync.model.Movie;
-import com.emedinaa.appasync.presenter.MovieContract;
-import com.emedinaa.appasync.presenter.MoviePresenter;
 import com.emedinaa.appasync.ui.BaseActivity;
 import com.emedinaa.appasync.ui.adapter.MovieAdapter;
 import com.google.common.collect.ImmutableList;
 
-public class MainUIActivity extends BaseActivity implements MovieContract.MovieContractView {
+public class MainUIActivity extends BaseActivity {
 
     private final int SPAN_COUNT = 2;
 
@@ -23,7 +21,6 @@ public class MainUIActivity extends BaseActivity implements MovieContract.MovieC
     private GridLayoutManager gridLayoutManager;
 
     private ImmutableList<Movie> movies;
-    private MoviePresenter moviePresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,28 +61,11 @@ public class MainUIActivity extends BaseActivity implements MovieContract.MovieC
         }
     }
 
-    @Override
     public void renderMovies(ImmutableList<Movie> movies) {
         MovieAdapter movieAdapter = new MovieAdapter(movies);
         recyclerViewMovies.setAdapter(movieAdapter);
     }
 
-    @Override
-    public void showError(String errorMessage) {
 
-    }
-
-    @Override
-    public void showLoading() {
-        showLoading();
-    }
-
-    @Override
-    public void hideLoading() {
-        hideLoading();
-    }
-
-
-    private class MovieJsonData extends JsonData<Movie> {
-    }
+    private class MovieJsonData extends JsonData<Movie> {}
 }

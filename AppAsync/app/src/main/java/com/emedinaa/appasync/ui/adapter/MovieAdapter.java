@@ -32,7 +32,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        //holder.imageViewMovie
+
         String fileName = ASSET_PATH+"images/" + data.get(position).getImage();
         Picasso.with(holder.imageViewMovie.getContext()).load(fileName).into(holder.imageViewMovie);
     }

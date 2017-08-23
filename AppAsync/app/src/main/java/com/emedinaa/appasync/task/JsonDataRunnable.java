@@ -20,7 +20,6 @@ public class JsonDataRunnable implements Runnable{
         this.uiCallback = uiCallback;
     }
 
-
     private void loadMovies(){
         MovieJsonData jsonData=null;
         try {

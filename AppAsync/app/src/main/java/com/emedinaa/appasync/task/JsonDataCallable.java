@@ -14,6 +14,7 @@ import java.util.concurrent.Executor;
 
 public class JsonDataCallable implements Callable<ImmutableList<Movie>> {
 
+    private final String EXCEPTION_MESSAGE= "Empty json";
     private final AssetJsonHelper assetJsonHelper;
     private ImmutableList<Movie> mMovies=null;
     private final Executor executor;
@@ -24,21 +25,19 @@ public class JsonDataCallable implements Callable<ImmutableList<Movie>> {
     }
 
     @Override
-    public ImmutableList<Movie> call()  {
-        try {
-            loadMovies();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public ImmutableList<Movie> call() throws Exception{
+        loadMovies();
         return mMovies;
     }
 
-    private void loadMovies() throws Exception{
+    private void loadMovies() throws Exception {
         MovieJsonData jsonData=null;
-            jsonData= assetJsonHelper.convertObjectToJsonAssets("movies.json",MovieJsonData.class);
+        jsonData= assetJsonHelper.convertObjectToJsonAssets("movies.json",MovieJsonData.class);
 
         if(jsonData!=null && jsonData.getData()!=null){
             mMovies= ImmutableList.copyOf(jsonData.getData());
+        }else{
+            throw new Exception(EXCEPTION_MESSAGE);
         }
     }
 }
