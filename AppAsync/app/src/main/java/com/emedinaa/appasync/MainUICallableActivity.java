@@ -21,7 +21,7 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class MainPromiseActivity extends AppCompatActivity {
+public class MainUICallableActivity extends AppCompatActivity {
 
     private static final int NUMBER_OF_CPUS = Runtime.getRuntime().availableProcessors();
 
@@ -36,7 +36,7 @@ public class MainPromiseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_promise);
+        setContentView(R.layout.activity_main);
         ui();
         app();
     }
@@ -59,14 +59,14 @@ public class MainPromiseActivity extends AppCompatActivity {
             @Override
             public void onDone(ImmutableList<Movie> result) {
                 hideLoading();
-                Toast.makeText(MainPromiseActivity.this, "message", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainUICallableActivity.this, "message", Toast.LENGTH_SHORT).show();
                 renderMovies(result);
             }
         }).fail(new FailCallback<Throwable>() {
             @Override
             public void onFail(Throwable result) {
                 hideLoading();
-                Toast.makeText(MainPromiseActivity.this, "error "+result.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainUICallableActivity.this, "error "+result.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

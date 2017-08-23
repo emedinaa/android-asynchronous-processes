@@ -14,7 +14,7 @@ import com.emedinaa.appasync.ui.BaseActivity;
 import com.emedinaa.appasync.ui.adapter.MovieAdapter;
 import com.google.common.collect.ImmutableList;
 
-public class MainActivity extends BaseActivity implements MovieContract.MovieContractView {
+public class MainUIActivity extends BaseActivity implements MovieContract.MovieContractView {
 
     private final int SPAN_COUNT = 2;
 
@@ -28,7 +28,7 @@ public class MainActivity extends BaseActivity implements MovieContract.MovieCon
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_ui);
         ui();
         loadMovies();
     }
@@ -52,7 +52,8 @@ public class MainActivity extends BaseActivity implements MovieContract.MovieCon
     private void loadMovies() {
         MovieJsonData jsonData = null;
         try {
-            jsonData = assetJsonHelper.convertObjectToJsonAssets("movies.json", MovieJsonData.class);
+            //jsonData = assetJsonHelper.convertObjectToJsonAssets("movies.json", MovieJsonData.class);
+            jsonData = assetJsonHelper.convertObjectToJsonAssets("heavy_movies.json", MovieJsonData.class);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -84,10 +85,6 @@ public class MainActivity extends BaseActivity implements MovieContract.MovieCon
         hideLoading();
     }
 
-    @Override
-    protected void setPresenter(Object presenter) {
-
-    }
 
     private class MovieJsonData extends JsonData<Movie> {
     }

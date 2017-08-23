@@ -14,7 +14,7 @@ public class MainBasicActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_basic);
+        setContentView(R.layout.activity_main_runnable);
         ui();
     }
 
@@ -22,8 +22,6 @@ public class MainBasicActivity extends BaseActivity {
         textViewThread= (TextView) findViewById(R.id.textViewThread);
     }
 
-    @Override
-    protected void setPresenter(Object presenter) {}
 
     @Override
     protected void onResume() {

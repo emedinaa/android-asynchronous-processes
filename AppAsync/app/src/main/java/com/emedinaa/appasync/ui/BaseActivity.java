@@ -53,7 +53,7 @@ public  abstract class BaseActivity extends AppCompatActivity {
 
     protected void updateUI(Bundle bundle,int type){}
 
-    protected  abstract void setPresenter(Object presenter);
+    //protected  abstract void setPresenter(Object presenter);
 
     protected void showLoading(){
         progressView.setVisibility(View.VISIBLE);

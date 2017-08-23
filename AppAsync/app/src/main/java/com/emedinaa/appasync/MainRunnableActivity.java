@@ -20,7 +20,7 @@ import java.util.concurrent.TimeUnit;
  * Created by emedinaa on 8/08/17.
  */
 
-public class MainBasicThreadActivity extends BaseActivity implements UICallback {
+public class MainRunnableActivity extends BaseActivity implements UICallback {
 
     private final String TAG= "CONSOLE";
 
@@ -29,7 +29,7 @@ public class MainBasicThreadActivity extends BaseActivity implements UICallback 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_basic);
+        setContentView(R.layout.activity_main_runnable);
         ui();
         startThread();
     }
@@ -73,7 +73,5 @@ public class MainBasicThreadActivity extends BaseActivity implements UICallback 
         Log.v(TAG, "3 UpdateUI...");
     }
 
-    @Override
-    protected void setPresenter(Object presenter) {}
 
 }

@@ -7,7 +7,6 @@ import android.util.Log;
 import android.widget.TextView;
 
 import com.emedinaa.appasync.model.Movie;
-import com.emedinaa.appasync.presenter.MoviePresenter;
 import com.emedinaa.appasync.task.JsonDataRunnable;
 import com.emedinaa.appasync.task.UICallback;
 import com.emedinaa.appasync.ui.BaseActivity;
@@ -20,7 +19,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-public class MainProcessesActivity extends BaseActivity implements UICallback {
+public class MainUIRunnableActivity extends BaseActivity implements UICallback {
 
     private final int SPAN_COUNT = 2;
 
@@ -28,7 +27,6 @@ public class MainProcessesActivity extends BaseActivity implements UICallback {
     private GridLayoutManager gridLayoutManager;
 
     private ImmutableList<Movie> movies;
-    private MoviePresenter moviePresenter;
 
     private void ui() {
         progressView = findViewById(R.id.frameLayoutProgress);
@@ -65,13 +63,9 @@ public class MainProcessesActivity extends BaseActivity implements UICallback {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_ui);
         ui();
         startThread();
-    }
-
-    @Override
-    protected void setPresenter(Object presenter) {
     }
 
     @Override
