@@ -1,6 +1,6 @@
 # android-asynchronous-processes
 Asynchronous Processes in Android
-<img src="./images/image1.jpg" height="360">
+<img src="./images/image1.jpg" width="1024">
 
 ## Demo
 <img src="./images/image2.png" height="480"><span style="padding-left:30px;"></span> <img src="./images/image3.png" height="480">
